@@ -88,7 +88,7 @@ const delArticle = async (req, res) => {
 
         await article.deleteOne();  
 
-         
+        console.log("article deleted succesfully");
         return res.status(200).json({ message: "Article deleted successfully" });
     } catch (err) {
         return res.status(500).json({ message: "Failed to delete Article", error: err.message });

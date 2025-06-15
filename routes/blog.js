@@ -30,7 +30,7 @@ router.get("/homepage", async (req, res) => {
         if (author) {
            using.author = author; 
         }
-
+    
 
         const allArticles = await BLOG.find(using)
             .skip(skip)
@@ -70,6 +70,7 @@ router.get("/myarticles", authenticateusr, async (req, res) => {
         const totalUserArticles = await BLOG.countDocuments({ author: userID });
         const usertotalpages = Math.ceil(totalUserArticles / limit);
 
+        console.log("Showing all user articles");
         return res.status(200).json({
             page,
             usertotalpages,
@@ -77,18 +78,17 @@ router.get("/myarticles", authenticateusr, async (req, res) => {
             listUserArticles,
         });
         
-        console.log("Showing all user articles");
 
     } catch (err) {
         return res.status(500).json({ message: "Sorry, couldn't get your articles", error: err.message });
     }
 });
 
-//publidh artucles
-router.patch("/article/:id/publish", authenticateusr, pubArticle);
+//publidh artucles (from drafts)
+router.patch("/article/:id", authenticateusr, pubArticle);
 
 //deleting an article
-router.delete("/article/:id/delete", authenticateusr, delArticle);
+router.delete("/article/:id", authenticateusr, delArticle);
 
 ///edit an article
 router.patch("/article/:id/edit", authenticateusr, editArticle )

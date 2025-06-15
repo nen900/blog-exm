@@ -44,6 +44,7 @@ const createUser = async (req, res) => {
             user: {
                 id: aUser._id,
                 email: aUser.email,
+                username: aUser.username,
                 },
                 token,
             })
