@@ -8,4 +8,4 @@ const authenticateusr = require("../middleware/auths");
 router.post("/signup", createUser);
 router.post("/login", loginUser);
 
-module.exports = routerssand
+module.exports = router;

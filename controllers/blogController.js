@@ -123,13 +123,12 @@ const editArticle = async (req, res) => {
 
         await article.save();
 
+        console.log("something has ben edited in article");
         return res.status(200).json({
              message: "Article updated successfully", 
              article_id: articleID,
              articleTitle: article.title,
              articlebody: article.articleBody, });
-
-         console.log("something has ben edited in article");
 
     } catch (err) {
         return res.status(500).json({ message: "Failed to update article", error: err.message });

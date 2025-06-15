@@ -31,7 +31,7 @@ const articleScm = new mongoose.Schema({
     articleBody: {
         type: String,
         required: true,
-        unique: true,
+        // unique: true,
     },
 
     tags: {
